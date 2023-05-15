@@ -1,20 +1,17 @@
-# Base image
-FROM python:3.9-slim-buster
+# Use an official Python runtime as the base image
+FROM python:3.9
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy the requirements file to the working directory
+# Copy the requirements file into the container
 COPY requirements.txt .
 
-# Install the required packages
+# Install the Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code to the working directory
+# Copy the entire current directory into the container at /app
 COPY . .
 
-# Set the entry point for the container
-ENTRYPOINT [ "python" ]
-
-# Set the default command for the container
-CMD [ "app.py" ]
+# Run the Python script
+CMD ["python", "watch_next.py"]
