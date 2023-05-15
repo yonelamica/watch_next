@@ -1,0 +1,3 @@
+# venv or virtualenv files
+venv/
+virtualenv/
